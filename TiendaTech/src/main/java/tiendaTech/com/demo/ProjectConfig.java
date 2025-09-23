@@ -1,4 +1,4 @@
-package tiendaTechJeff.com.demo;
+package tiendaTech.com.demo;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
