@@ -3,11 +3,11 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 
-package tiendaTech.services;
+package tiendaTech.com.services;
 
 
-import tiendaTech.domain.Categoria;
-import tiendaTech.repository.CategoriaRepository;
+import tiendaTech.com.domain.Categoria;
+import tiendaTech.com.repository.CategoriaRepository;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

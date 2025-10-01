@@ -3,9 +3,9 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 
-package tiendaTech.repository;
+package tiendaTech.com.repository;
 
-import tiendaTech.domain.Categoria;
+import tiendaTech.com.domain.Categoria;
 import java.util.List;
 import org.springframework.data.jpa.repository.JpaRepository;
  

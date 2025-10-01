@@ -3,9 +3,9 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 
-package tiendaTech.controller;
+package tiendaTech.com.controller;
 
-import tiendaTech.services.CategoriaServices;
+import tiendaTech.com.services.CategoriaServices;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
