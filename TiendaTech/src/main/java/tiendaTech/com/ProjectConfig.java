@@ -1,4 +1,4 @@
-package tiendaTech.com.demo;
+package tiendaTech.com;
 
 import java.util.Locale;
 import org.springframework.context.MessageSource;
