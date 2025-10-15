@@ -5,7 +5,7 @@
 
 package tiendaTech.com.controller;
 
-
+import tiendaTech.com.domain.Categoria;
 import tiendaTech.com.services.CategoriaServices;
 import jakarta.validation.Valid;
 import java.util.Locale;

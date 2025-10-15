@@ -1,4 +1,4 @@
-package com.tiendatech.com.services;
+package tiendaTech.com.services;
 
 import com.google.auth.Credentials;
 import com.google.auth.ServiceAccountSigner;
@@ -81,5 +81,12 @@ public class FirebaseStorageService {
     private String sacaNumero(long id) {
         return String.format("%014d", id);
     }
-
+    
+     public String uploadImage(MultipartFile file, String carpeta, Long id) throws IOException {
+        // Aquí pondrías la lógica real para subir la imagen a Firebase Storage
+        // Por ahora, para compilar, puedes devolver solo un string temporal
+        return carpeta + "/" + id + "_" + file.getOriginalFilename();
+    }
 }
+  
+ 

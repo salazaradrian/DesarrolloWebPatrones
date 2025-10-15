@@ -6,7 +6,8 @@
 package tiendaTech.com.services;
 
 
-
+import tiendaTech.com.domain.Categoria;
+import tiendaTech.com.repository.CategoriaRepository;
 import java.io.IOException;
 import java.util.List;
 import java.util.Optional;

@@ -31,7 +31,7 @@ public class Categoria implements Serializable {
     @Column(name = "ruta_imagen", length = 1024)
     private String rutaImagen;
     @Column(nullable = false)
-    private boolean activo;
+    private boolean activo = true;
  
     @Column(name = "fecha_creacion", updatable = false, insertable = false)
     private LocalDateTime fechaCreacion;
