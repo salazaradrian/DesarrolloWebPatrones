@@ -6,7 +6,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface ProductoRepository extends JpaRepository<Producto, Integer> {
     List<Producto> findByActivoTrue();
-    LList<Producto> findByCategoriaIdCategoria(Integer idCategoria);
+    List<Producto> findByCategoriaIdCategoria(Integer idCategoria);
 
 }
 
