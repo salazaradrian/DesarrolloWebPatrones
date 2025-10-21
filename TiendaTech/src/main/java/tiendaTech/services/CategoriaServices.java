@@ -46,7 +46,7 @@ public class CategoriaServices {
             try {
                 String rutaImagen = firebaseStorageService.uploadImage(
                         imagenFile, "categoria",
-                        categoria.getIdCategoria());
+                        categoria.getIdCategoria().longValue());
                 categoria.setRutaImagen(rutaImagen);
                 categoriaRepository.save(categoria);
             } catch (IOException e) {

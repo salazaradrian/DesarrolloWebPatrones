@@ -45,7 +45,7 @@ public class ProductoService {
             try {
                 String rutaImagen = firebaseStorageService.uploadImage(
                         imagenFile, "producto",
-                        producto.getIdProducto());
+                        producto.getIdProducto().longValue());
                 producto.setRutaImagen(rutaImagen);
                 productoRepository.save(producto);
             } catch (IOException e) {
