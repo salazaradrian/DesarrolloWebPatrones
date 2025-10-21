@@ -25,9 +25,10 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 @Controller
 @RequestMapping("/categoria")
 public class CategoriaController {
- 
+
     @Autowired
     private CategoriaServices categoriaService;
+    
     @GetMapping("/listado")
     public String listado(Model model) {
         var categorias = categoriaService.getCategorias(false);
@@ -35,16 +36,19 @@ public class CategoriaController {
         model.addAttribute("totalCategorias", categorias.size());
         return "/categoria/listado";
     }
+    
     @Autowired
     private MessageSource messageSource;
- 
+
     @PostMapping("/guardar")
     public String guardar(@Valid Categoria categoria,@RequestParam MultipartFile imagenFile, RedirectAttributes redirectAttributes) {
+        
         categoriaService.save(categoria,imagenFile);        
         redirectAttributes.addFlashAttribute("todoOk",messageSource.getMessage("mensaje.actualizado",null,Locale.getDefault()));
+        
         return "redirect:/categoria/listado";
     }
- 
+
     @PostMapping("/eliminar")
     public String eliminar(@RequestParam Integer idCategoria, RedirectAttributes redirectAttributes) {
         String titulo="todoOk";
@@ -64,7 +68,7 @@ public class CategoriaController {
         redirectAttributes.addFlashAttribute(titulo,messageSource.getMessage(detalle, null, Locale.getDefault()));
         return "redirect:/categoria/listado";
     }
- 
+
     @GetMapping("/modificar/{idCategoria}")    
     public String modificar(@PathVariable("idCategoria") Integer idCategoria, Model model, RedirectAttributes redirectAttributes) {
         Optional<Categoria> categoriaOpt = categoriaService.getCategoria(idCategoria);
@@ -75,5 +79,5 @@ public class CategoriaController {
         model.addAttribute("categoria", categoriaOpt.get());
         return "/categoria/modifica";
     }
- 
+
 }

@@ -22,6 +22,7 @@ public class CategoriaServices {
  
     @Autowired
     private CategoriaRepository categoriaRepository;
+    
     @Transactional(readOnly=true)
     public List<Categoria> getCategorias(boolean activo) {
         if (activo) {
@@ -29,14 +30,15 @@ public class CategoriaServices {
         }
         return categoriaRepository.findAll();
     }
+    
     @Transactional(readOnly = true)
     public Optional<Categoria> getCategoria(Integer idCategoria) {
         return categoriaRepository.findById(idCategoria);
     }
- 
+
     @Autowired
     private FirebaseStorageService firebaseStorageService;
- 
+
     @Transactional
     public void save(Categoria categoria, MultipartFile imagenFile) {
         categoria = categoriaRepository.save(categoria);
@@ -48,11 +50,11 @@ public class CategoriaServices {
                 categoria.setRutaImagen(rutaImagen);
                 categoriaRepository.save(categoria);
             } catch (IOException e) {
- 
+
             }
         }
     }
- 
+
     @Transactional
     public void delete(Integer idCategoria) {
         // Verifica si la categoría existe antes de intentar eliminarlo

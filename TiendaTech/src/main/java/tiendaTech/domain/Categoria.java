@@ -21,7 +21,7 @@ public class Categoria implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_categoria")
-    private Long idCategoria;
+    private Integer idCategoria;
     @NotBlank(message = "La descripción no puede estar vacía")
     @Size(max = 50, message = "La descripción no puede exceder los 50 caracteres")
     @Column(length = 50, nullable = false, unique = true)
@@ -39,10 +39,10 @@ public class Categoria implements Serializable {
     @Column(name = "fecha_modificacion", insertable = false, updatable = false)
     private LocalDateTime fechaModificacion;
  
-//    @OneToMany
-//    @JoinColumn(name = "id_categoria", updatable = false, insertable = false)
-//    private List<Producto> productos;
-//    
+    @OneToMany
+    @JoinColumn(name = "id_categoria", updatable = false, insertable = false)
+    private List<Producto> productos;
+    
     public Categoria() {
  
     }
