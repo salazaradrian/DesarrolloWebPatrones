@@ -14,11 +14,13 @@ import org.springframework.web.multipart.MultipartFile;
 @Service
 public class ProductoService {
 
-    @Autowired
-    private ProductoRepository productoRepository;
+    private final ProductoRepository productoRepository;
+    private final FirebaseStorageService firebaseStorageService;
 
-    @Autowired
-    private FirebaseStorageService firebaseStorageService;
+    public ProductoService(ProductoRepository productoRepository, FirebaseStorageService firebaseStorageService) {
+        this.productoRepository = productoRepository;
+        this.firebaseStorageService = firebaseStorageService;
+    }
 
     @Transactional(readOnly = true)
     public List<Producto> getProductos(boolean activo) {
@@ -33,12 +35,6 @@ public class ProductoService {
         return productoRepository.findById(idProducto);
     }
 
-    @Transactional(readOnly = true)
-public List<Producto> getProductosPorCategoria(Integer idCategoria) {
-    return productoRepository.findByCategoriaIdCategoria(idCategoria);
-}
-
-
     @Transactional
     public void save(Producto producto, MultipartFile imagenFile) {
         producto = productoRepository.save(producto);
@@ -50,7 +46,7 @@ public List<Producto> getProductosPorCategoria(Integer idCategoria) {
                 producto.setRutaImagen(rutaImagen);
                 productoRepository.save(producto);
             } catch (IOException e) {
-                e.printStackTrace();
+                // manejar error si lo deseas
             }
         }
     }
@@ -65,5 +61,25 @@ public List<Producto> getProductosPorCategoria(Integer idCategoria) {
         } catch (DataIntegrityViolationException e) {
             throw new IllegalStateException("No se puede eliminar el producto. Tiene datos asociados.", e);
         }
+    }
+
+    @Transactional(readOnly = true)
+    public List<Producto> consultaDerivada(double precioInf, double precioSup) {
+        return productoRepository.findByPrecioBetweenOrderByPrecioAsc(precioInf, precioSup);
+    }
+
+    @Transactional(readOnly = true)
+    public List<Producto> consultaJPQL(double precioInf, double precioSup) {
+        return productoRepository.consultaJPQL(precioInf, precioSup);
+    }
+
+    @Transactional(readOnly = true)
+    public List<Producto> consultaSQL(double precioInf, double precioSup) {
+        return productoRepository.consultaSQL(precioInf, precioSup);
+    }
+
+    @Transactional(readOnly = true)
+    public List<Producto> getProductosPorCategoria(Integer idCategoria) {
+        return productoRepository.findByCategoriaIdCategoria(idCategoria);
     }
 }
