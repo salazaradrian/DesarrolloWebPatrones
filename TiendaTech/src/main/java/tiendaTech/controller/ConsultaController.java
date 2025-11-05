@@ -55,4 +55,13 @@ public class ConsultaController {
         model.addAttribute("precioSup", precioSup);
         return "/consultas/listado";
     }
+    
+    @PostMapping("/consultaStock")
+public String consultaStock(@RequestParam int limite, Model model) {
+    var lista = productoService.consultaStock(limite);
+    model.addAttribute("productos", lista);
+    model.addAttribute("limite", limite);
+    return "/consultas/listado";
+}
+
 }

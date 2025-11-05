@@ -70,7 +70,9 @@
                 <div th:replace="~{consultas/fragmentos :: formularioConsulta('/consultas/consultaDerivada', #{pruebas.ampliadas}, 'primary')}"></div>
                 <div th:replace="~{consultas/fragmentos :: formularioConsulta('/consultas/consultaJPQL', #{pruebas.jpql}, 'warning')}"></div>
                 <div th:replace="~{consultas/fragmentos :: formularioConsulta('/consultas/consultaSQL', #{pruebas.nativo}, 'success')}"></div>
-                <div><div class="card">Acá va su consulta de la tarea #2</div></div>
+                <div th:replace="~{consultas/fragmentos :: formularioConsulta('/consultas/consultaStock', #{productos.bajoStock}, 'danger')}"></div>
+
+
             </div>
         </section>
 
@@ -88,6 +90,10 @@
                         <div class="mb-3">
                             <label>[[#{pruebas.precio.superior}]]</label>
                             <input type="number" name="precioSup" class="form-control" th:value="${precioSup}" min="0" required/>
+                        </div>
+                        <div class="mb-3">
+                            <label>Límite de stock</label>
+                            <input type="number" name="limite" class="form-control" th:value="${limite}" min="0" required/>
                         </div>
                     </div>
                     <div class="card-footer text-center">

@@ -19,6 +19,7 @@ public interface ProductoRepository extends JpaRepository<Producto, Integer> {
     List<Producto> consultaSQL(@Param("precioInf") double precioInf, @Param("precioSup") double precioSup);
 
     List<Producto> findByCategoriaIdCategoria(Integer idCategoria);
+    List<Producto> findByExistenciasLessThanEqual(int limite);
 
 }
 

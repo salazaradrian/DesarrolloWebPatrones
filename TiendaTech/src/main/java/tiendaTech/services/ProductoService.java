@@ -21,7 +21,13 @@ public class ProductoService {
         this.productoRepository = productoRepository;
         this.firebaseStorageService = firebaseStorageService;
     }
+    
+    public List<Producto> consultaStock(int limite) {
+    // Devuelve todos los productos con existencias menores o iguales al límite
+    return productoRepository.findByExistenciasLessThanEqual(limite);
+}
 
+    
     @Transactional(readOnly = true)
     public List<Producto> getProductos(boolean activo) {
         if (activo) {
