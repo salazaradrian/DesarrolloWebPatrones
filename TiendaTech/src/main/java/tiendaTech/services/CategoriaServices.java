@@ -3,11 +3,11 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 
-package tiendaTech.com.services;
+package tiendaTech.services;
 
 
-import tiendaTech.com.domain.Categoria;
-import tiendaTech.com.repository.CategoriaRepository;
+import tiendaTech.domain.Categoria;
+import tiendaTech.repository.CategoriaRepository;
 import java.io.IOException;
 import java.util.List;
 import java.util.Optional;
@@ -46,7 +46,7 @@ public class CategoriaServices {
             try {
                 String rutaImagen = firebaseStorageService.uploadImage(
                         imagenFile, "categoria",
-                        categoria.getIdCategoria().longValue());
+                        categoria.getIdCategoria());
                 categoria.setRutaImagen(rutaImagen);
                 categoriaRepository.save(categoria);
             } catch (IOException e) {

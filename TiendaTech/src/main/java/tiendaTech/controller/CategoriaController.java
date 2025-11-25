@@ -3,10 +3,10 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 
-package tiendaTech.com.controller;
+package tiendaTech.controller;
 
-import tiendaTech.com.domain.Categoria;
-import tiendaTech.com.services.CategoriaServices;
+import tiendaTech.domain.Categoria;
+import tiendaTech.services.CategoriaServices;
 import jakarta.validation.Valid;
 import java.util.Locale;
 import java.util.Optional;
@@ -21,7 +21,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
- 
+
 @Controller
 @RequestMapping("/categoria")
 public class CategoriaController {

@@ -1,5 +1,5 @@
 
-package tiendaTech.com.domain;
+package tiendaTech.domain;
 
 import jakarta.persistence.*;
 import jakarta.validation.constraints.*;

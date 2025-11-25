@@ -3,11 +3,11 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 
-package tiendaTech.com.controller;
+package tiendaTech.controller;
 
-import tiendaTech.com.domain.Producto;
-import tiendaTech.com.services.CategoriaServices;
-import tiendaTech.com.services.ProductoService;
+import tiendaTech.domain.Producto;
+import tiendaTech.services.CategoriaServices;
+import tiendaTech.services.ProductoService;
 import jakarta.validation.Valid;
 import java.util.Locale;
 import java.util.Optional;
@@ -55,7 +55,7 @@ public class ProductoController {
         return "redirect:/producto/listado";
     }
 
-  @PostMapping("/eliminar")
+    @PostMapping("/eliminar")
     public String eliminar(@RequestParam Integer idProducto, RedirectAttributes redirectAttributes) {
         String titulo = "todoOk";
         String detalle = "mensaje.eliminado";
@@ -63,19 +63,19 @@ public class ProductoController {
             productoService.delete(idProducto);
         } catch (IllegalArgumentException e) {
             titulo = "error"; // Captura la excepción de argumento inválido para el mensaje de "no existe"
-            detalle = "cateogira.error01";
+            detalle = "categoria.error01";
         } catch (IllegalStateException e) {
             titulo = "error"; // Captura la excepción de estado ilegal para el mensaje de "datos asociados"
-            detalle = "cateogira.error02";
+            detalle = "categoria.error02";
         } catch (Exception e) {
             titulo = "error";  // Captura cualquier otra excepción inesperada
-            detalle = "cateogira.error03";
+            detalle = "categoria.error03";
         }
         redirectAttributes.addFlashAttribute(titulo, messageSource.getMessage(detalle, null, Locale.getDefault()));
         return "redirect:/producto/listado";
     }
 
-    @GetMapping("/modificar/{idProducto}")
+    @GetMapping("/usuario/modificar/{idUsuario}")
     public String modificar(@PathVariable("idProducto") Integer idProducto, Model model, RedirectAttributes redirectAttributes) {
         Optional<Producto> productoOpt = productoService.getProducto(idProducto);
         if (productoOpt.isEmpty()) {
