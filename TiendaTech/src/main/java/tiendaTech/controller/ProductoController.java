@@ -40,7 +40,7 @@ public class ProductoController {
         model.addAttribute("totalProductos", productos.size());
         var categorias = categoriaService.getCategorias(true);
         model.addAttribute("categorias", categorias);
-        return "/producto/listado";
+        return "producto/listado";
     }
 
     @Autowired

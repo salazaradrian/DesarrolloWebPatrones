@@ -63,15 +63,14 @@
                 </div>
             </div>
         </section>
-        
-        
+
+
         <section th:fragment="consultas">
             <div class="row row-cols-4 p-2">
                 <div th:replace="~{consultas/fragmentos :: formularioConsulta('/consultas/consultaDerivada', #{pruebas.ampliadas}, 'primary')}"></div>
                 <div th:replace="~{consultas/fragmentos :: formularioConsulta('/consultas/consultaJPQL', #{pruebas.jpql}, 'warning')}"></div>
                 <div th:replace="~{consultas/fragmentos :: formularioConsulta('/consultas/consultaSQL', #{pruebas.nativo}, 'success')}"></div>
-                <div th:replace="~{consultas/fragmentos :: formularioConsulta('/consultas/consultaStock', #{productos.bajoStock}, 'danger')}"></div>
-
+                <div th:replace="~{consultas/fragmentos :: consultaCategoria}"></div>
 
             </div>
         </section>
@@ -91,10 +90,6 @@
                             <label>[[#{pruebas.precio.superior}]]</label>
                             <input type="number" name="precioSup" class="form-control" th:value="${precioSup}" min="0" required/>
                         </div>
-                        <div class="mb-3">
-                            <label>Límite de stock</label>
-                            <input type="number" name="limite" class="form-control" th:value="${limite}" min="0" required/>
-                        </div>
                     </div>
                     <div class="card-footer text-center">
                         <button type="submit" class="btn text-white" th:classappend="${'btn-' + buttonColor}">
@@ -104,6 +99,34 @@
                 </div>
             </form>
         </div>
-        
+
+        <div th:fragment="consultaCategoria">
+            <form method="post" th:action="@{/consultas/consultaCategoria}" class="was-validated">
+                <div class="card p-2">
+                    <div class="card-header text-center text-white bg-info">
+                        <h5>Consulta por Categoría</h5>
+                    </div>
+
+                    <div class="card-body">
+                        <label>Seleccione categoría</label>
+                        <select name="idCategoria" class="form-select" required>
+                            <option value="">Seleccione...</option>
+                            <option th:each="c : ${categorias}"
+                                    th:value="${c.idCategoria}"
+                                    th:text="${c.descripcion}">
+                            </option>
+                        </select>
+                    </div>
+
+                    <div class="card-footer text-center">
+                        <button type="submit" class="btn btn-info text-white">
+                            <i class="fa-solid fa-filter"></i> Filtrar
+                        </button>
+                    </div>
+                </div>
+            </form>
+        </div>
+
+
     </body>
 </html> 
